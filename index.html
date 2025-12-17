@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Juguetería Santa's Toys — Maqueta</title>
+  <meta name="description" content="Juguetería Santa's Toys — Juegos, Juguetes, Muebles y Artículos para Bebés. Pedidos por Whatsapp +54 9 11 5249-2315" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-1: #e0f7fa; /* Light Cyan */
+      --bg-2: #e8eaf6; /* Lavender */
+      --card:#ffffff;
+      --accent: #ff4081;       /* Pink */
+      --accent-2:#ffc107;      /* Amber */
+      --accent-3: #4caf50;      /* Green */
+      --muted:#546e7a;         /* Blue Grey */
+      --text: #263238;
+      --glass: rgba(255,255,255,0.65);
+      --shadow: 0 4px 6px rgba(0,0,0,0.04);
+      --success:#4caf50;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Arial;
+      background: linear-gradient(170deg, var(--bg-1) 0%, var(--bg-2) 100%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      -webkit-tap-highlight-color:transparent;
+    }
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:60;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.6));
+      border-bottom:1px solid rgba(7,17,51,0.04);
+    }
+    .nav{
+      max-width:1200px; margin:0 auto; display:flex; align-items:center; gap:16px;
+      padding:12px 20px;
+    }
+    .brand{display:flex; align-items:center; gap:12px; text-decoration:none; color:inherit;}
+    .logo{
+      width:52px; height:52px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+      background: white;
+      color:white; font-weight:800; box-shadow: 0 6px 20px rgba(255, 64, 129, 0.25);
+      font-size:18px;
+    }
+    .brand h1{font-size:1.05rem; margin:0; letter-spacing:0.2px}
+    nav.desktop{margin-left:auto; display:flex; gap:14px; align-items:center}
+    nav.desktop a{color:var(--muted); text-decoration:none; padding:8px 12px; border-radius:10px; font-weight:600; transition:color .18s}
+    nav.desktop a:hover{color:var(--text)}
+    nav.desktop a.cta{background:linear-gradient(90deg,var(--accent),#ff8ba7); color:white}
+    .icon-btn{background:var(--glass); border-radius:10px; padding:8px; display:inline-grid; place-items:center; border:1px solid rgba(7,17,51,0.04)}
+    .mobile-toggle{display:none}
+
+    /* Hero */
+    .hero{
+      max-width:1200px; margin:28px auto; padding:60px 20px;
+      text-align: center;
+      border-radius: 24px;
+      background: url('https://images.pexels.com/photos/3661202/pexels-photo-3661202.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center;
+      background-size: cover;
+      position: relative;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 16px 40px rgba(38, 50, 56, 0.1);
+    }
+    .hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.4); border-radius: 24px; }
+    .hero > * { position: relative; z-index: 2; }
+    .eyebrow{display:inline-block; background:var(--accent-2); padding:6px 12px; border-radius:999px; font-weight:800; font-size:12px; color:var(--text); backdrop-filter: blur(4px);}
+    .hero h2{
+      margin:12px 0 6px; font-size:42px; line-height:1.1; font-weight: 800;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .lead{color:rgba(255,255,255,0.9); margin-bottom:24px; max-width: 600px;}
+    .search{
+      display:flex; gap:8px; align-items:center; background: var(--glass); padding:10px; border-radius:16px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1); border: 1px solid rgba(255,255,255,0.2);
+      width: 100%; max-width: 500px;
+    }
+    .search input{flex:1; border:0; background:transparent; padding:10px; font-size:15px; outline:none; color:white}
+    .search input::placeholder { color: rgba(255,255,255,0.7); }
+    .cta-row{display:flex; gap:12px; margin-top:24px}
+    .btn{padding:12px 18px; border-radius:12px; border:0; cursor:pointer; font-weight:700; transition: transform .15s, box-shadow .15s;}
+    .btn.primary{background: var(--accent); color:white; box-shadow: 0 4px 20px rgba(255, 64, 129, 0.2);}
+    .btn.ghost{background:var(--glass); border:1px solid rgba(255,255,255,0.2); color:white;}
+    .btn:hover{transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255, 64, 129, 0.25);}
+
+    /* Right hero sample cards */
+    .showcase{
+      display:grid; gap:14px; grid-template-columns:1fr;
+    }
+    .product-sm{background:linear-gradient(180deg,#fff, #fff); border-radius:14px; padding:12px; display:flex; gap:12px; align-items:center; box-shadow:var(--shadow); transform:translateZ(0); border:1px solid rgba(7,17,51,0.03)}
+    .product-sm img{width:72px; height:72px; object-fit:cover; border-radius:10px}
+    .price{font-weight:900; color:var(--accent)}
+
+    /* Categories */
+    .categories{max-width:1200px; margin:18px auto; padding:0 20px; display:flex; gap:12px; overflow:auto; justify-content: center;}
+    .cat{
+      min-width:160px; background:var(--card); border-radius:14px; padding:18px; text-align:center; 
+      transition:transform .2s, box-shadow .2s; cursor:pointer; border: 2px solid transparent;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .cat strong { margin-top: 4px; }
+    .cat .muted { margin-top: auto; font-size: 13px; }
+
+    .cat:hover{transform:translateY(-8px); box-shadow:0 10px 20px rgba(0,0,0,0.05)}
+    .cat svg{width:44px; height:44px; margin-bottom:10px}
+
+    /* Grid products */
+    .grid{max-width:1200px; margin:18px auto; padding:0 20px; display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
+    .card{background:var(--card); border-radius:16px; padding:12px; position:relative; overflow:hidden; border:1px solid rgba(38,50,56,0.05); transition: all .25s ease; box-shadow: 0 0 0 rgba(0,0,0,0.05);}
+    .card:hover{transform:translateY(-8px); box-shadow: 0 12px 24px rgba(38,50,56,0.08);}
+    .card:hover .add{background: var(--accent); color: white;}
+    .card img{width:100%; height:180px; object-fit:cover; border-radius:10px; display:block}
+    .card h3{margin:8px 0 4px; font-size:16px}
+    .card .meta{display:flex; justify-content:space-between; align-items:center}
+    .tag{background:var(--accent-3); color:white; padding:6px 10px; border-radius:8px; font-weight:700; font-size:13px}
+
+    /* Floating action / cart */
+    .cart-btn{position:fixed; right:18px; bottom:18px; z-index:80; border-radius:99px; padding:12px 14px; background:var(--accent); color:white; box-shadow:0 10px 30px rgba(255, 64, 129, 0.3); display:flex; gap:12px; align-items:center; border: 3px solid white;}
+    .cart-drawer{position:fixed; right:0; top:0; height:100vh; width:min(380px, 100%); background:linear-gradient(180deg,#fff,#fafafa); box-shadow:-20px 0 40px rgba(10,20,40,0.08); transform:translateX(110%); transition:transform .36s cubic-bezier(.2,.9,.3,1); z-index:90; padding:18px; overflow:auto}
+    .cart-drawer.open{transform:translateX(0)}
+    .cart-item{display:flex; gap:12px; align-items:center; padding:10px 0; border-bottom:1px dashed rgba(7,17,51,0.04)}
+
+    /* Footer */
+    footer{max-width:1200px; margin:28px auto; padding:20px; display:flex; gap:28px; justify-content:space-between; align-items:center; color:var(--muted); flex-wrap: wrap;}
+    .newsletter{display:flex; gap:8px; align-items:center}
+
+    /* Modal quick view */
+    .modal{position:fixed; inset:0; display:grid; place-items:center; background:rgba(2,6,23,0.45); visibility:hidden; opacity:0; transition:opacity .18s; z-index:100}
+    .modal.open{visibility:visible; opacity:1}
+    .modal-card{background:white; border-radius:14px; width:min(960px,94%); max-height:90vh; overflow:auto; padding:18px; box-shadow:0 30px 80px rgba(2,6,23,0.4)}
+
+    .modal-content-grid {
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      gap:18px;align-items:start;
+    }
+
+    /* Promo Carousel */
+    .promo-carousel { max-width: 1200px; margin: 28px auto; padding: 0 20px; position: relative; overflow: hidden; border-radius: 16px; }
+    .carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
+    .carousel-slide { min-width: 100%; padding: 24px; text-align: center; color: white; font-weight: 800; font-size: 1.1rem; }
+    .carousel-slide strong { font-size: 1.3rem; }
+    .carousel-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.7); border: none; border-radius: 50%;
+      width: 40px; height: 40px; cursor: pointer; z-index: 10;
+      display: grid; place-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .carousel-btn:hover { background: white; }
+    .carousel-btn.prev { left: 10px; }
+    .carousel-btn.next { right: 10px; }
+
+    .grid-2-col {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 18px;
+      align-items: start;
+    }
+
+    /* Responsive */
+    @media (max-width:1000px){
+      .grid{grid-template-columns:repeat(2,1fr)}
+      nav.desktop{display:none}
+      .mobile-toggle{display:inline-grid; margin-left:auto}
+      nav.desktop.nav--open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        right: 20px;
+        top: 72px;
+        background: white;
+        padding: 12px;
+        border-radius: 12px;
+        box-shadow: 0 12px 40px rgba(2,6,23,0.08);
+      }
+      header .nav{gap:8px}
+      .grid-2-col { grid-template-columns: 1fr; }
+      .categories {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        overflow: visible;
+      }
+    }
+    @media (max-width:520px){
+      .grid{grid-template-columns:repeat(1,1fr)}
+      .card img{height:220px}
+      .hero { padding: 40px 20px; }
+      .hero h2 { font-size: 32px; }
+      .cta-row { flex-direction: column; width: 100%; max-width: 300px; }
+      footer{
+        justify-content:center; text-align: center;
+        flex-direction: column; gap: 18px;
+      }
+      .newsletter{width: 100%; justify-content: center;}
+      .newsletter input{flex:1}
+      .modal-content-grid { grid-template-columns: 1fr; }
+      .modal-content-grid img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+    }
+
+    /* subtle animations */
+    .float { animation: float 8s ease-in-out infinite; transform-origin:center; }
+    @keyframes float{ 0%{transform:translateY(0)} 50%{transform:translateY(-10px) rotate(-2deg)} 100%{transform:translateY(0)} }
+    .pulse{animation: pulse 1.8s infinite}
+    @keyframes pulse{ 0%{transform:scale(1)} 50%{transform:scale(1.04)} 100%{transform:scale(1)} }
+
+    /* utilities */
+    .muted{color:var(--muted)}
+    .center{display:flex; align-items:center; gap:8px}
+    a{color:inherit}
+  </style>
+  <style>
+    /* Animaciones al scrollear */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+    .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav" role="navigation" aria-label="Main">
+      <a class="brand" href="#">
+        <div class="logo">
+          <img src="imagenes/logo.png" alt="Santa's Toys Logo" style="width: 40px; height: auto;">
+        </div>
+        <div>
+          <h1>Santa's Toys</h1>
+          <div class="muted" style="font-size:12px">Juguetería • Juegos, Muebles & Bebés</div>
+        </div>
+      </a>
+
+      <button class="mobile-toggle icon-btn" aria-label="Abrir menú" aria-expanded="false" id="menuToggle">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="#061026" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+
+      <nav class="desktop" id="desktopNav">
+        <a href="#productos">Productos</a>
+        <a href="#categorias">Categorías</a>
+        <a href="#sobre-nosotros">Sobre nosotros</a>
+        <a href="#contacto">Contacto</a>
+        <a class="cta" href="https://wa.me/5491152492315?text=Hola%20Santa%27s%20Toys%20-%20Consulta" target="_blank" rel="noreferrer" style="background: var(--accent-3); box-shadow: 0 4px 20px rgba(76, 175, 80, 0.2);">Pedir por WhatsApp</a>
+        <button class="icon-btn" id="cartOpen" title="Ver carrito">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4" stroke="#061026" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Hero">
+      <span class="eyebrow">Novedades 2025</span>
+      <h2>La magia de jugar empieza aquí</h2>
+      <p class="lead">Juegos, juguetes, muebles y todo para bebés. Comprá desde tu casa y recibilo en todo el país.</p>
+
+      <div class="search" role="search" aria-label="Buscar productos">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M21 21l-4.35-4.35" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <input id="searchInput" placeholder="Buscar por nombre, ej: 'Bicicleta', 'Puzzle'..." />
+        <button class="btn ghost" id="voiceBtn" title="Buscar por voz" style="background: transparent; border: none;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3zm6 9a1 1 0 1 1-2 0 5 5 0 1 0-10 0 1 1 0 1 1-2 0 7 7 0 0 1 14 0zM10 21h4a1 1 0 1 1 0 2h-4a1 1 0 1 1 0-2z"/></svg>
+        </button>
+      </div>
+
+      <div class="cta-row">
+        <button class="btn primary" id="verProductos">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          Ver productos destacados
+        </button>
+        <a class="btn ghost" href="#categorias">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 6px;"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></svg>
+          Ver categorías
+        </a>
+      </div>
+
+      <div style="margin-top:24px; display:flex; gap:10px; align-items:center; font-size: 13px; text-shadow: 0 1px 3px rgba(0,0,0,0.2);">
+        <div class="center">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="var(--accent-3)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Envíos a todo el país • Pago seguro
+        </div>
+      </div>
+    </section>
+
+    <section class="promo-carousel" aria-label="Promociones">
+      <div class="carousel-track">
+        <div class="carousel-slide" style="background: linear-gradient(90deg, #4caf50, #81c784);">
+          🎄 ¡Adelantate a la Navidad! <strong>15% OFF</strong> en toda la tienda.
+        </div>
+        <div class="carousel-slide" style="background: linear-gradient(90deg, #ff4081, #ff80ab);">
+          💳 ¡Ahora <strong>3 y 6 Cuotas Sin Interés</strong> con todas las tarjetas!
+        </div>
+        <div class="carousel-slide" style="background: linear-gradient(90deg, #536dfe, #7c4dff);">
+          🏦 Pagando con Cuenta DNI tenés un <strong>25% de reintegro</strong>. ¡Aprovechá!
+        </div>
+      </div>
+      <button class="carousel-btn prev" aria-label="Anterior">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="carousel-btn next" aria-label="Siguiente">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </section>
+
+    <section id="categorias">
+      <div class="categories" aria-label="Categorías">
+        <div class="cat animate-on-scroll" style="--color: #ffc107;">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l3 6 6 .5-4.5 4 1 6L12 17l-5.5 1.5 1-6L3 8.5 9 8 12 2z" fill="#ffd93d"/></svg>
+          <strong>Juguetes clásicos</strong>
+          <div class="muted">Madera & Educativos</div>
+        </div>
+        <div class="cat animate-on-scroll" style="--color: #ff9800; transition-delay: 50ms;">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="14" rx="3" fill="#ffb86b"/></svg>
+          <strong>Muebles niños</strong>
+          <div class="muted">Mesas, sillas y estantes</div>
+        </div>
+        <div class="cat animate-on-scroll" style="--color: #03a9f4; transition-delay: 100ms;">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="6" fill="#a0f0ff"/></svg>
+          <strong>Artículos bebé</strong>
+          <div class="muted">Cunas, móviles & ropa</div>
+        </div>
+        <div class="cat animate-on-scroll" style="--color: #4caf50; transition-delay: 150ms;">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 6h18v12H3z" fill="#c7f9a9"/></svg>
+          <strong>Juegos de mesa</strong>
+          <div class="muted">Familia y estrategia</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="productos" aria-label="Productos destacados" class="animate-on-scroll">
+      <div style="max-width:1200px;margin:12px auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;">
+        <h2 style="margin:0">Productos destacados</h2>
+        <div class="muted">Mostrando 8 resultados</div>
+      </div>
+
+      <div class="grid" id="productGrid">
+        <!-- cards: imágenes con fallback -->
+        <div class="card animate-on-scroll" data-id="p1">
+          <img src="imagenes/cochebebe.png" alt="Cochecito de Bebé Confort">
+          <h3>Cochecito de Bebé Confort</h3>
+          <div class="meta"><div class="muted">0-2 años</div><div class="tag">$45.990</div></div>
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <button class="btn ghost quick" data-id="p1">Vista rápida</button>
+            <button class="btn ghost add" data-id="p1">Agregar</button>
+          </div>
+        </div>
+
+        <div class="card animate-on-scroll" data-id="p2" style="transition-delay: 50ms;">
+          <img src="imagenes/bici.png" alt="Bicicleta Infantil Rodado 12">
+          <h3>Bicicleta Infantil Rodado 12</h3>
+          <div class="meta"><div class="muted">3-5 años</div><div class="tag">$28.500</div></div>
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <button class="btn ghost quick" data-id="p2">Vista rápida</button>
+            <button class="btn ghost add" data-id="p2">Agregar</button>
+          </div>
+        </div>
+
+        <div class="card animate-on-scroll" data-id="p3" style="transition-delay: 100ms;">
+          <img src="imagenes/masa.png" alt="Set de Masas de Colores">
+          <h3>Set de Masas de Colores</h3>
+          <div class="meta"><div class="muted">3+ años</div><div class="tag">$4.500</div></div>
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <button class="btn ghost quick" data-id="p3">Vista rápida</button>
+            <button class="btn ghost add" data-id="p3">Agregar</button>
+          </div>
+        </div>
+
+        <div class="card animate-on-scroll" data-id="p4" style="transition-delay: 150ms;">
+          <img src="imagenes/simon.png" alt="Juego de Memoria Simon">
+          <h3>Juego de Memoria Simon</h3>
+          <div class="meta"><div class="muted">7+ años</div><div class="tag">$9.800</div></div>
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <button class="btn ghost quick" data-id="p4">Vista rápida</button>
+            <button class="btn ghost add" data-id="p4">Agregar</button>
+          </div>
+        </div>
+
+        <div class="card animate-on-scroll" data-id="p5" style="transition-delay: 200ms;">
+          <img src="imagenes/guitarra.png" alt="Guitarra Electrónica Rosa">
+          <h3>Guitarra Electrónica Rosa</h3>
+          <div class="meta"><div class="muted">4+ años</div><div class="tag">$8.990</div></div>
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <button class="btn ghost quick" data-id="p5">Vista rápida</button>
+            <button class="btn ghost add" data-id="p5">Agregar</button>
+          </div>
+        </div>
+
+        <div class="card animate-on-scroll" data-id="p6" style="transition-delay: 250ms;">
+          <img src="imagenes/coneja.png" alt="Peluche Coneja Betsy">
+          <h3>Peluche Coneja Betsy</h3>
+          <div class="meta"><div class="muted">Todas las edades</div><div class="tag">$7.250</div></div>
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <button class="btn ghost quick" data-id="p6">Vista rápida</button>
+            <button class="btn ghost add" data-id="p6">Agregar</button>
+          </div>
+        </div>
+
+        <div class="card animate-on-scroll" data-id="p7" style="transition-delay: 300ms;">
+          <img src="imagenes/pig.png" alt="Cerdito Interactivo Piggly">
+          <h3>Cerdito Interactivo Piggly</h3>
+          <div class="meta"><div class="muted">4+ años</div><div class="tag">$14.890</div></div>
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <button class="btn ghost quick" data-id="p7">Vista rápida</button>
+            <button class="btn ghost add" data-id="p7">Agregar</button>
+          </div>
+        </div>
+
+        <div class="card animate-on-scroll" data-id="p8" style="transition-delay: 350ms;">
+          <img src="imagenes/mochila.png" alt="Mochila Escolar Gorila">
+          <h3>Mochila Escolar Gorila</h3>
+          <div class="meta"><div class="muted">3+ años</div><div class="tag">$11.250</div></div>
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <button class="btn ghost quick" data-id="p8">Vista rápida</button>
+            <button class="btn ghost add" data-id="p8">Agregar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre-nosotros" style="max-width:1200px;margin:24px auto;padding:0 20px">
+      <div class="grid-2-col">
+        <div class="animate-on-scroll" style="background:var(--card);padding:18px;border-radius:16px;">
+          <h3>Sobre Santa's Toys</h3>
+          <p class="muted">Tienda familiar con selección curada de juguetes y artículos para bebés. Asesoramiento por edad y envíos seguros a todo el país. También podés ver más productos en nuestro MercadoShop.</p>
+          <p class="muted"><strong>Síguenos:</strong> TikTok <a href="https://www.tiktok.com/@santastoysok" target="_blank" rel="noreferrer">@santastoysok</a></p>
+        </div>
+
+        <div id="contacto" class="animate-on-scroll" style="background:var(--card);padding:18px;border-radius:16px; transition-delay: 100ms;">
+          <h3>Contacto</h3>
+          <p class="muted">Pedidos y consultas por WhatsApp:</p>
+          <a class="btn primary" href="https://wa.me/5491152492315?text=Hola%20Santa%27s%20Toys%20-%20Consulta" target="_blank" rel="noreferrer">💬 +54 9 11 5249-2315</a>
+          <hr style="margin:12px 0;border:none;border-top:1px dashed rgba(7,17,51,0.06)">
+          <p class="muted" style="font-size:13px">Política de cambios, envíos y métodos de pago disponibles. (Se puede enlazar con página real cuando esté listo)</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="muted" style="font-size:13px">© Santa's Toys — Maqueta • Diseñado para presentación al cliente</div>
+      <div class="newsletter">
+        <input id="email" placeholder="Tu email para novedades" style="padding:8px;border-radius:8px;border:1px solid rgba(7,17,51,0.06)">
+        <button class="btn primary" id="subscribe">Suscribir</button>
+      </div>
+    </footer>
+  </main>
+
+  <button class="cart-btn pulse" id="cartFloating" aria-label="Abrir carrito">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg>
+    <span id="cartCount">0</span>
+  </button>
+
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true" aria-label="Carrito">
+    <h3>Carrito</h3>
+    <div id="cartList" style="margin-top:8px"></div>
+    <div style="margin-top:12px; display:flex; justify-content:space-between; align-items:center">
+      <div class="muted">Total:</div>
+      <div id="cartTotal" style="font-weight:800">$0</div>
+    </div>
+    <div style="margin-top:12px; display:flex; gap:8px">
+      <button class="btn ghost" id="closeCart">Seguir comprando</button>
+      <button class="btn primary" id="checkout">Procesar pedido</button>
+    </div>
+  </aside>
+
+  <div class="modal" id="modal">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-content-grid">
+        <img id="modalImg" src="" alt="">
+        <div>
+          <h3 id="modalTitle">Título</h3>
+          <p id="modalDesc" class="muted">Descripción breve del producto con beneficios y edad recomendada.</p>
+          <div style="display:flex;gap:8px;align-items:center;margin-top:12px">
+            <div style="font-weight:800;font-size:18px" id="modalPrice">$0</div>
+            <button class="btn primary" id="modalAdd">Agregar al carrito</button>
+            <button class="btn ghost" id="modalClose">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Datos para maqueta (unchanged)
+    const PRODUCTS = {
+      p1:{id:'p1',title:'Cochecito de Bebé Confort',price:45990,age:'0-2 años',img:'imagenes/cochebebe.png',desc:'Cochecito plegable y liviano, ideal para paseos cómodos y seguros.'},
+      p2:{id:'p2',title:'Bicicleta Infantil Rodado 12',price:28500,age:'3-5 años',img:'imagenes/bici.png',desc:'Primera bicicleta ideal para aprender, con rueditas de apoyo incluidas.'},
+      p3:{id:'p3',title:'Set de Masas de Colores',price:4500,age:'3+ años',img:'imagenes/masa.png',desc:'Desarrolla la creatividad con este set de masas no tóxicas y moldes divertidos.'},
+      p4:{id:'p4',title:'Juego de Memoria Simon',price:9800,age:'7+ años',img:'imagenes/simon.png',desc:'El clásico juego de luces y sonidos para desafiar tu memoria.'},
+      p5:{id:'p5',title:'Guitarra Electrónica Rosa',price:8990,age:'4+ años',img:'imagenes/guitarra.png',desc:'Guitarra con luces, melodías y sonidos para las futuras estrellas de rock.'},
+      p6:{id:'p6',title:'Peluche Coneja Betsy',price:7250,age:'Todas las edades',img:'imagenes/coneja.png',desc:'La adorable coneja Betsy, suave y perfecta para abrazar.'},
+      p7:{id:'p7',title:'Cerdito Interactivo Piggly',price:14890,age:'4+ años',img:'imagenes/pig.png',desc:'¡El cerdito más tierno! Camina, come y hace sonidos como una mascota de verdad.'},
+      p8:{id:'p8',title:'Mochila Escolar Gorila',price:11250,age:'3+ años',img:'imagenes/mochila.png',desc:'Mochila divertida y resistente con diseño de gorila, ideal para el jardín o la escuela.'}
+    };
+
+    // carrito
+    let CART = JSON.parse(localStorage.getItem('maqueta_cart')||'{}');
+    const cartCountEl = document.getElementById('cartCount');
+    const cartTotalEl = document.getElementById('cartTotal');
+    const cartListEl = document.getElementById('cartList');
+    const cartDrawer = document.getElementById('cartDrawer');
+
+    function updateCartUI(){
+      const ids = Object.keys(CART);
+      cartCountEl.textContent = ids.reduce((s,i)=>s+CART[i].qty,0);
+      cartListEl.innerHTML = '';
+      let total = 0;
+      ids.forEach(id=>{
+        const item = CART[id];
+        const p = PRODUCTS[id]; // p for product
+        total += p.price * item.qty;
+        const div = document.createElement('div');
+        div.className='cart-item';
+        // Using data-attributes for event delegation
+        div.dataset.id = id;
+
+        div.innerHTML = `
+          <img src="${p.img}" alt="${p.title}" style="width:56px;height:56px;border-radius:8px;object-fit:cover">
+          <div style="flex:1">
+            <div style="font-weight:700">${p.title}</div>
+            <div class="muted" style="font-size:13px">${item.qty} &times; $${p.price.toLocaleString()}</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <button data-id="${id}" class="icon-btn inc">+</button>
+            <button data-id="${id}" class="icon-btn dec">−</button>
+          </div>
+        `;
+        cartListEl.appendChild(div);
+      });
+      cartTotalEl.textContent = '$' + total.toLocaleString();
+      localStorage.setItem('maqueta_cart', JSON.stringify(CART));
+    }
+
+    // Event delegation for cart buttons (+/-)
+    cartListEl.addEventListener('click', e => {
+      const id = e.target.dataset.id;
+      if (!id) return;
+
+      if (e.target.classList.contains('inc')) {
+        CART[id].qty++;
+      } else if (e.target.classList.contains('dec')) {
+        CART[id].qty--;
+        if (CART[id].qty <= 0) delete CART[id];
+      }
+      updateCartUI();
+    });
+
+    function addToCart(id,qty=1){
+      if(!CART[id]) CART[id]={qty:0};
+      CART[id].qty += qty;
+      updateCartUI();
+      const btn = document.querySelector('.add[data-id="'+id+'"]');
+      if(btn){ btn.textContent='✓ Agregado'; setTimeout(()=>btn.textContent='Agregar',900); }
+    }
+    document.querySelectorAll('.add').forEach(b=>b.onclick=()=>addToCart(b.dataset.id));
+
+    const toggleCart = () => {
+      const isOpen = cartDrawer.classList.toggle('open');
+      cartDrawer.setAttribute('aria-hidden', !isOpen);
+    };
+
+    document.getElementById('cartOpen').onclick = toggleCart;
+    document.getElementById('cartFloating').onclick = toggleCart;
+    document.getElementById('closeCart').onclick = () => cartDrawer.classList.remove('open');
+
+
+    document.getElementById('checkout').onclick = ()=>{
+      if(Object.keys(CART).length===0){ alert('El carrito está vacío'); return; }
+      let text = 'Hola Santa%27s Toys%20-%20Quiero%20comprar%3A%0A';
+      Object.keys(CART).forEach(id=>{
+        text += encodeURIComponent(`- ${PRODUCTS[id].title} x${CART[id].qty} %0A`);
+      });
+      text += encodeURIComponent('%0ATotal%20estimado%20%3A%20') + encodeURIComponent(Object.keys(CART).reduce((s,i)=>s+PRODUCTS[i].price*CART[i].qty,0).toLocaleString());
+      window.open('https://wa.me/5491152492315?text='+text,'_blank');
+    };
+
+    // modal
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalPrice = document.getElementById('modalPrice');
+    let modalCurrent = null;
+    document.querySelectorAll('.quick').forEach(q=>q.onclick = e=> {
+      const id = q.dataset.id;
+      const p = PRODUCTS[id];
+      modalImg.src = p.img;
+      modalTitle.textContent = p.title;
+      modalDesc.textContent = p.desc + ' • Edad recomendada: ' + p.age;
+      modalPrice.textContent = '$' + p.price.toLocaleString();
+      modal.classList.add('open');
+      modalCurrent = id;
+    });
+    document.getElementById('modalClose').onclick = ()=> modal.classList.remove('open');
+    document.getElementById('modalAdd').onclick = ()=>{ if(modalCurrent) addToCart(modalCurrent); modal.classList.remove('open'); }
+
+    // search
+    document.getElementById('searchInput').addEventListener('input', function(){
+      const q = this.value.trim().toLowerCase();
+      document.querySelectorAll('#productGrid .card').forEach(card=>{
+        const id = card.dataset.id;
+        const p = PRODUCTS[id];
+        const match = !q || p.title.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q);
+        card.style.display = match ? '' : 'none';
+      });
+    });
+
+    document.getElementById('verProductos').onclick = ()=> location.hash = '#productos';
+
+    // mobile menu toggle simple
+    document.getElementById('menuToggle').onclick = ()=>{
+      const btn = document.getElementById('menuToggle');
+      const nav = document.getElementById('desktopNav');
+      const isOpen = nav.classList.toggle('nav--open');
+      btn.setAttribute('aria-expanded', isOpen);
+    };
+
+    document.getElementById('subscribe').onclick = ()=>{
+      const e = document.getElementById('email').value.trim();
+      if(!e) return alert('Ingresá un email');
+      alert('Gracias — Te avisamos cuando tengamos novedades');
+      document.getElementById('email').value='';
+    };
+
+    window.addEventListener('load', ()=> {
+      updateCartUI();
+    });
+
+    window.addEventListener('keydown', e=>{ if(e.key==='Escape'){ modal.classList.remove('open'); cartDrawer.classList.remove('open'); } });
+
+    // Mock voice search
+    document.getElementById('voiceBtn').onclick = ()=>{
+      const s = document.getElementById('searchInput');
+      s.value='muñeca, carro, puzzle';
+      s.dispatchEvent(new Event('input'));
+      s.focus();
+    };
+  </script>
+  <script>
+    // Carousel Logic
+    const track = document.querySelector('.carousel-track');
+    const slides = Array.from(track.children);
+    const nextButton = document.querySelector('.carousel-btn.next');
+    const prevButton = document.querySelector('.carousel-btn.prev');
+    const slideWidth = slides[0].getBoundingClientRect().width;
+
+    let currentIndex = 0;
+
+    const moveToSlide = (track, currentSlide, targetSlide) => {
+      track.style.transform = 'translateX(-' + targetSlide.style.left + ')';
+      currentSlide.classList.remove('current-slide');
+      targetSlide.classList.add('current-slide');
+    }
+
+    const updateSlidePosition = () => {
+      const slideWidth = slides[0].getBoundingClientRect().width;
+      slides.forEach((slide, index) => {
+        slide.style.left = slideWidth * index + 'px';
+      });
+    }
+    updateSlidePosition();
+    window.addEventListener('resize', updateSlidePosition);
+
+    nextButton.addEventListener('click', e => { currentIndex = (currentIndex + 1) % slides.length; track.style.transform = 'translateX(-' + slides[currentIndex].style.left + ')'; });
+    prevButton.addEventListener('click', e => { currentIndex = (currentIndex - 1 + slides.length) % slides.length; track.style.transform = 'translateX(-' + slides[currentIndex].style.left + ')'; });
+    setInterval(() => { nextButton.click(); }, 5000);
+  </script>
+  <script>
+    // Animate on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      rootMargin: '0px',
+      threshold: 0.05 // 5% del elemento debe ser visible
+    });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
